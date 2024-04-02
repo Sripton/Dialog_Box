@@ -6,6 +6,6 @@ import App from "./App";
 ReactDOMClient.hydrateRoot(
   document.getElementById("root"),
   <BrowserRouter>
-    <App {window.initState} />
+    <App {...window.initState} />
   </BrowserRouter>
 );
