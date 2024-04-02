@@ -1,9 +1,9 @@
 import React from "react";
 import App from "./App";
 
-export default function Layout() {
+export default function Layout({ initState }) {
   return (
-    // <!DOCTYPE html>
+
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
@@ -11,7 +11,9 @@ export default function Layout() {
         <title>Document</title>
       </head>
       <body>
-        <App />
+        <div id="root">
+          <App {...initState} />
+        </div>
       </body>
     </html>
   );
