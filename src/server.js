@@ -3,6 +3,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import path from "path";
 import jsxRender from "./jsxRender/jsxReneder";
+import indexRouter from "./indexRouter/indexRouter";
 
 dotenv.config();
 
@@ -17,8 +18,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.render("Layout");
+app.use(async (req, res, next) => {
+  res.locals.path = req.originalUrl;
+  next();
 });
+app.use("/", indexRouter);
 
 app.listen(PORT, () => console.log(`Server started on ${PORT} port`));

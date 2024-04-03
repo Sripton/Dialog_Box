@@ -15,10 +15,10 @@ export default function Navbar() {
             <a href="/">Контакты</a>
           </li>
           <li>
-            <a href="/">Регистрация</a>
+            <a href="/signup">Регистрация</a>
           </li>
           <li>
-            <a href="/">Вход</a>
+            <a href="/signin">Вход</a>
           </li>
         </ul>
       </div>

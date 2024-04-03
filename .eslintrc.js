@@ -23,5 +23,6 @@ module.exports = {
   rules: {
     "import/no-extraneous-dependencies": 0,
     quotes: 0,
+    "no-restricted-exports": 0,
   },
 };

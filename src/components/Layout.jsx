@@ -1,4 +1,5 @@
 import React from "react";
+import { StaticRouter } from "react-router-dom/server";
 import App from "./App";
 
 export default function Layout({ initState }) {
@@ -22,7 +23,9 @@ export default function Layout({ initState }) {
       </head>
       <body>
         <div id="root">
-          <App {...initState} />
+          <StaticRouter location={initState.path}>
+            <App {...initState} />
+          </StaticRouter>
         </div>
       </body>
     </html>
