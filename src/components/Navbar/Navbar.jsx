@@ -1,27 +1,56 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({
+  userIDSession,
+  userSession,
+  logoutHandler,
+  pathNow,
+}) {
+  console.log("pathNow", pathNow);
   return (
     <div className="header">
       <div className="header-logo">
         <img src="/header/logo.png" alt="logotip" />
       </div>
       <div className="header-nav">
-        <ul>
-          <li>
-            <a href="/">О нас</a>
-          </li>
-          <li>
-            <a href="/">Контакты</a>
-          </li>
-          <li>
-            <a href="/signup">Регистрация</a>
-          </li>
-          <li>
-            <a href="/signin">Вход</a>
-          </li>
-        </ul>
+        {!userIDSession ? (
+          <ul>
+            <li>
+              <NavLink to="/signup">Регистрация</NavLink>
+            </li>
+            <li>
+              <NavLink to="/signin">Вход</NavLink>
+            </li>
+          </ul>
+        ) : (
+          <ul>
+            <li>
+              <NavLink to="/">О нас</NavLink>
+            </li>
+            <li>
+              <NavLink to="/">Контакты</NavLink>
+            </li>
+          </ul>
+        )}
       </div>
+      {!userIDSession ? (
+        <> </>
+      ) : (
+        <>
+          <div className="header-userName">
+            <h3>
+              Привет <span> {`${userSession}`}</span>
+            </h3>
+          </div>
+          <div className="header-logout">
+            <NavLink to="/logout" onClick={logoutHandler}>
+              Выход
+            </NavLink>
+          </div>
+        </>
+      )}
+
       <div className="header-icon">
         <a href="/facebook">
           <img src="/header/Facebook.png" alt="iconFacebook" />

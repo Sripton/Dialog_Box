@@ -1,30 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Signin() {
+export default function Signin({ setUserSession, setUserIDsession }) {
+  const [inputs, setInputs] = useState({
+    userLogin: "",
+    userPassword: "",
+  });
+  const navigate = useNavigate();
+  const inputHandler = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const responce = await fetch(`/api/users/signin`, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(inputs),
+    });
+    if (responce.ok) {
+      const data = await responce.json();
+      setUserSession(data.userName);
+      setUserIDsession(data.userID);
+      navigate("/");
+    }
+  };
   return (
     <div className="modal">
       <div className="modal__dialog">
         <div className="modal__content">
-          <form action="#">
-            {/* <div data-close className="modal__close">
-            &times;
-          </div> */}
+          <form onSubmit={submitHandler}>
             <div className="modal__title">Вход</div>
             <input
               required
               placeholder="Введите логин"
-              name="name"
+              name="userLogin"
+              value={inputs.userLogin || ""}
+              onChange={inputHandler}
               type="text"
               className="modal__input"
             />
             <input
               required
               placeholder="Введите пароль"
-              name="phone"
-              type="phone"
+              name="userPassword"
+              value={inputs.userPassword || ""}
+              onChange={inputHandler}
+              type="password"
               className="modal__input"
             />
-            <button type="button" className="btn btn_dark btn_min">
+            <button type="submit" className="btn btn_dark btn_min">
               Отправить
             </button>
           </form>

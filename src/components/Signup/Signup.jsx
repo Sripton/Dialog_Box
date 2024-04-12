@@ -1,37 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Signup() {
+export default function Signup({ setUserSession, setUserIDsession }) {
+  const [inputs, setInputs] = useState({
+    userName: "",
+    userLogin: "",
+    userPassword: "",
+  });
+  const navigate = useNavigate();
+  const inputHandler = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const responce = await fetch(`/api/users/signup`, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(inputs),
+    });
+    if (responce.ok) {
+      const data = await responce.json();
+      // setUserSession(data); // выдаст объект { userName: [имя], userID: [id]
+      setUserSession(data.userName); // выдаст только имя
+      setUserIDsession(data.userID);
+      setInputs("");
+      navigate('/')
+    }
+  };
+  console.log("inputs", inputs);
   return (
     <div className="modal">
       <div className="modal__dialog">
         <div className="modal__content">
-          <form action="#">
-            {/* <div data-close className="modal__close">
-              &times;
-            </div> */}
+          <form onSubmit={submitHandler}>
             <div className="modal__title">Зарегистрируйтесь</div>
             <input
               required
               placeholder="Введите имя"
-              name="name"
+              name="userName"
+              value={inputs.userName || ""}
+              onChange={inputHandler}
               type="text"
               className="modal__input"
             />
             <input
               required
               placeholder="Введите логин"
-              name="name"
+              name="userLogin"
+              value={inputs.userLogin || ""}
+              onChange={inputHandler}
               type="text"
               className="modal__input"
             />
             <input
               required
               placeholder="Введите пароль"
-              name="phone"
-              type="phone"
+              name="userPassword"
+              value={inputs.userPassword || ""}
+              onChange={inputHandler}
+              type="password"
               className="modal__input"
             />
-            <button type="button" className="btn btn_dark btn_min">
+            <button type="submit" className="btn btn_dark btn_min">
               Отправить
             </button>
           </form>

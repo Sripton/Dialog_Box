@@ -24,5 +24,6 @@ module.exports = {
     "import/no-extraneous-dependencies": 0,
     quotes: 0,
     "no-restricted-exports": 0,
+    camelcase: 0,
   },
 };
