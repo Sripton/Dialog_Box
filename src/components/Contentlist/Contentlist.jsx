@@ -4,11 +4,12 @@ import { NavLink } from "react-router-dom";
 export default function Contentlist({ directions }) {
   const [tab, setTab] = useState(1);
   return (
-    <div className="tabcontainer">
-      {directions.map((direction) =>
+    <>
+      {directions?.map((direction) =>
         tab === direction.id ? (
-          <>
-            <div className="tabcontent" key={direction.id}>
+          <div className="tabcontainer" key={direction.id}>
+            <div className="bgc_blue" />
+            <div className="tabcontent">
               <img src={direction.img} alt="content" />
               <div className="tabcontent-description">
                 {direction.description}
@@ -19,7 +20,6 @@ export default function Contentlist({ directions }) {
                 <h3>Выберите тему</h3>
                 <hr />
               </div>
-
               <div className="tabheader__items">
                 <div
                   className={`tabheader__item ${
@@ -47,14 +47,15 @@ export default function Contentlist({ directions }) {
                 </div>
               </div>
             </div>
+
             <div className="getDialog">
-              <NavLink href="/">Перейти</NavLink>
+              <NavLink className="getDialog_link" to={`/direction/${tab}`}>Перейти</NavLink>
             </div>
-          </>
+          </div>
         ) : (
           ""
         )
       )}
-    </div>
+    </>
   );
 }

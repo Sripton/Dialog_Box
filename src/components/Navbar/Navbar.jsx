@@ -1,13 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Navbar({
-  userIDSession,
-  userSession,
-  logoutHandler,
-  pathNow,
-}) {
-  console.log("pathNow", pathNow);
+export default function Navbar({ userIDSession, userSession, logoutHandler }) {
   return (
     <div className="header">
       <div className="header-logo">
@@ -44,7 +38,7 @@ export default function Navbar({
             </h3>
           </div>
           <div className="header-logout">
-            <NavLink to="/logout" onClick={logoutHandler}>
+            <NavLink className="logout" to="/logout" onClick={logoutHandler}>
               Выход
             </NavLink>
           </div>
@@ -56,10 +50,10 @@ export default function Navbar({
           <img src="/header/Facebook.png" alt="iconFacebook" />
         </a>
         <a href="/lindkedin">
-          <img src="header/Linkedin.png" alt="iconLinkedin" />
+          <img src="/header/Linkedin.png" alt="iconLinkedin" />
         </a>
         <a href="/twitter">
-          <img src="header/Twitter.png" alt="iconTwitter" />
+          <img src="/header/Twitter.png" alt="iconTwitter" />
         </a>
       </div>
     </div>

@@ -8,6 +8,7 @@ import jsxRender from "./jsxRender/jsxReneder";
 import indexRouter from "./indexRouter/indexRouter";
 import apiUsers from "./API/apiUsers";
 import { Direction } from "./db/models";
+import apiSubjects from "./API/apiSubjects";
 
 dotenv.config();
 
@@ -48,4 +49,5 @@ app.use(express.static("public"));
 
 app.use("/", indexRouter);
 app.use("/api/users", apiUsers);
+app.use("/api/subjects", apiSubjects);
 app.listen(PORT, () => console.log(`Server started on ${PORT} port`));

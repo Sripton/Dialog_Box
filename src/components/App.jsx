@@ -3,8 +3,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Signup from "./Signup";
 import Signin from "./Signin";
-import Tabcontent from "./Tabcontent";
-import Diection from "./Direction/Diection";
+import Subjectlist from "./Subjectlist";
 import Contentlist from "./Contentlist";
 
 export default function App({ userID, userName, direction }) {
@@ -21,9 +20,6 @@ export default function App({ userID, userName, direction }) {
       navigate("/");
     }
   };
-  console.log("userSession", userSession);
-  console.log("userIDSession", userIDSession);
-  console.log("directions", directions);
 
   return (
     <div>
@@ -53,7 +49,7 @@ export default function App({ userID, userName, direction }) {
             />
           }
         />
-        <Route path="/direction/:id" element={<Diection />} />
+        <Route path="/direction/:id" element={<Subjectlist />} />
       </Routes>
     </div>
   );
