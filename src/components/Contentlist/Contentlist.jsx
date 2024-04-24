@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Contentlist({ directions }) {
+export default function Contentlist({ direction }) {
   const [tab, setTab] = useState(1);
   return (
     <>
-      {directions?.map((direction) =>
-        tab === direction.id ? (
-          <div className="tabcontainer" key={direction.id}>
+      {direction?.map((direct) =>
+        tab === direct.id ? (
+          <div className="tabcontainer" key={direct.id}>
             <div className="bgc_blue" />
             <div className="tabcontent">
-              <img src={direction.img} alt="content" />
+              <img src={direct.img} alt="content" />
               <div className="tabcontent-description">
-                {direction.description}
+                {direct.description}
               </div>
             </div>
             <div className="tabheader">

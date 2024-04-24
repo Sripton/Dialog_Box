@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Modal from "../Modal";
 
-export default function Subjectcard({ subject }) {
+export default function Subjectcard({ id, subject }) {
   const [modalActive, setModalActive] = useState(false);
-
+  // console.log("id", id);
   return (
     <>
       <div className="card__container" key={subject.id}>
@@ -25,6 +25,7 @@ export default function Subjectcard({ subject }) {
         modalActive={modalActive}
         onClose={() => setModalActive(false)}
         subject={subject}
+        subjectID={id}
       />
     </>
   );
