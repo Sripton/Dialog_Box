@@ -24,4 +24,7 @@ router.get("/postlists/:id", async (req, res) => {
 router.get("/changeposts/:id", async (req, res) => {
   res.render("Layout");
 });
+router.get("/commentpost/:id", async (req, res) => {
+  res.render("Layout");
+});
 export default router;

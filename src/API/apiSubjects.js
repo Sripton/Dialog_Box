@@ -15,5 +15,14 @@ router.get("/:id", async (req, res) => {
     console.log(error);
   }
 });
+router.get("/getonesubject/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const findSubject = await Subject.findOne({ where: { id } });
+    res.json(findSubject);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 export default router;

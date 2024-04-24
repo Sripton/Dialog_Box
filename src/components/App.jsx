@@ -8,6 +8,7 @@ import Contentlist from "./Contentlist";
 import Addposts from "./Addposts";
 import Postlist from "./Postlist/Postlist";
 import Changepostlist from "./Changepostlist";
+import Commentlist from "./Commentlist";
 
 export default function App({ userID, userName, direction, allPosts }) {
   const [userSession, setUserSession] = useState(userName || null);
@@ -61,12 +62,19 @@ export default function App({ userID, userName, direction, allPosts }) {
         />
         <Route
           path="/postlists/:id"
-          element={<Postlist posts={posts} setPosts={setPosts} />}
+          element={
+            <Postlist
+              posts={posts}
+              setPosts={setPosts}
+              userIDSession={userIDSession}
+            />
+          }
         />
         <Route
           path="/changeposts/:id"
           element={<Changepostlist posts={posts} setPosts={setPosts} />}
         />
+        <Route path="/commentpost/:id" element={<Commentlist />} />
       </Routes>
     </div>
   );

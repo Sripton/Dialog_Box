@@ -27,7 +27,7 @@ export default function Addposts({ setPosts }) {
   };
 
   useEffect(() => {
-    fetch(`/api/posts/${id}`, { method: "GET" })
+    fetch(`/api/subjects/getonesubject/${id}`, { method: "GET" })
       .then((res) => res.json())
       .then((data) => setSubject(data))
       .catch((err) => console.log(err));

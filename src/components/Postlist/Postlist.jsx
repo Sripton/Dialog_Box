@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Postcard from "../Postcard";
 
-export default function Postlist({ posts, setPosts }) {
+export default function Postlist({ posts, setPosts, userIDSession }) {
   const { id } = useParams();
   useEffect(() => {
     fetch(`/api/posts/countposts/${id}`, { method: "GET" })
@@ -25,6 +25,7 @@ export default function Postlist({ posts, setPosts }) {
             id={post.id}
             post={post}
             deleteHandler={deleteHandler}
+            userIDSession={userIDSession}
           />
         ))}
     </div>

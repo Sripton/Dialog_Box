@@ -20,12 +20,12 @@ export default function Changepostcard({ post, setPosts }) {
     if (responce.ok) {
       const data = await responce.json();
       setPosts(data);
-      navigate(`/postlists/${post.subject_id}`)
+      navigate(`/postlists/${post.subject_id}`);
     }
   };
 
-    console.log("post in card", post);
-  //   console.log("id in card", typeof id);
+  console.log("post in card", post);
+  console.log("id in card", id);
   return (
     <>
       {post.id.toString() !== id ? (
@@ -73,7 +73,9 @@ export default function Changepostcard({ post, setPosts }) {
               <div className="comment__footer">
                 <div>likes 123</div>
                 <div>dislike 23</div>
-                <div className="show__replays">replay 2</div>
+                <NavLink to="/" className="show__replays">
+                  replay 2
+                </NavLink>
               </div>
             </div>
           </div>
