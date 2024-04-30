@@ -7,9 +7,10 @@ import store from "session-file-store";
 import jsxRender from "./jsxRender/jsxReneder";
 import indexRouter from "./indexRouter/indexRouter";
 import apiUsers from "./API/apiUsers";
-import { Direction, Post } from "./db/models";
+import { Direction, Post, Comment } from "./db/models";
 import apiSubjects from "./API/apiSubjects";
 import apiPosts from "./API/apiPosts";
+import apiComments from "./API/apiComments";
 
 dotenv.config();
 
@@ -37,11 +38,13 @@ app.use(session(sessionConfig));
 app.use(async (req, res, next) => {
   const direction = await Direction.findAll();
   const allPosts = await Post.findAll();
+  const allComments = await Comment.findAll({ order: [["createdAt", "DESC"]] });
   res.locals.path = req.originalUrl;
   res.locals.userID = req.session?.userID;
   res.locals.userName = req.session?.userName;
   res.locals.direction = direction;
   res.locals.allPosts = allPosts;
+  res.locals.allComments = allComments;
   next();
 });
 
@@ -54,4 +57,5 @@ app.use("/", indexRouter);
 app.use("/api/users", apiUsers);
 app.use("/api/subjects", apiSubjects);
 app.use("/api/posts", apiPosts);
+app.use("/api/comments", apiComments);
 app.listen(PORT, () => console.log(`Server started on ${PORT} port`));

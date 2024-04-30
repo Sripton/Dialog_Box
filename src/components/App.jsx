@@ -8,12 +8,19 @@ import Contentlist from "./Contentlist";
 import Addposts from "./Addposts";
 import Postlist from "./Postlist/Postlist";
 import Changepostlist from "./Changepostlist";
-import Commentlist from "./Commentlist";
+import Comments from "./Comments";
 
-export default function App({ userID, userName, direction, allPosts }) {
+export default function App({
+  userID,
+  userName,
+  direction,
+  allPosts,
+  allComments,
+}) {
   const [userSession, setUserSession] = useState(userName || null);
   const [userIDSession, setUserIDsession] = useState(userID || null);
   const [posts, setPosts] = useState(allPosts || null);
+  const [comments, setComments] = useState(allComments || null);
 
   const navigate = useNavigate();
   const logoutHandler = async () => {
@@ -25,8 +32,6 @@ export default function App({ userID, userName, direction, allPosts }) {
     }
   };
 
-  // console.log("direction", direction);
-  // console.log('posts', posts);
   return (
     <div>
       <Navbar
@@ -74,7 +79,17 @@ export default function App({ userID, userName, direction, allPosts }) {
           path="/changeposts/:id"
           element={<Changepostlist posts={posts} setPosts={setPosts} />}
         />
-        <Route path="/commentpost/:id" element={<Commentlist />} />
+
+        <Route
+          path="/commentpost/:id"
+          element={
+            <Comments
+              comments={comments}
+              setComments={setComments}
+              userIDSession={userIDSession}
+            />
+          }
+        />
       </Routes>
     </div>
   );

@@ -19,7 +19,15 @@ router.post("/:id", async (req, res) => {
   }
 });
 
-
+router.get("/getonepost/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const findOnePostID = await Post.findOne({ where: { id } });
+    res.json(findOnePostID);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 router.get("/countposts/:id", async (req, res) => {
   const { id } = req.params;

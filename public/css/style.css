@@ -501,7 +501,7 @@ body {
   text-decoration: none;
   color: white;
 }
-.comment__title2{
+.comment__title2 {
   font-size: 15px;
 }
 
@@ -545,18 +545,13 @@ body {
   background: lightgray;
 }
 
-.buttonschangepost {
-  
-}
-
-
-
 .containerposts {
   width: min(90%, 1150px);
   margin: 3rem auto;
 }
 .comment__container {
   position: relative;
+  margin-bottom: 10px;
 }
 .comment__container::before {
   content: "";
@@ -566,19 +561,20 @@ body {
   left: -10px;
   position: absolute;
 }
-.comment__container:not(:first-child){
-margin-left: 3rem;
-margin-top: 1rem;
+.comment__container:not(:first-child) {
+  margin-left: 3rem;
+  margin-top: 1rem;
 }
 .comment__card {
   padding: 20px;
   background-color: white;
   border: 1px solid rgb(16, 5, 5, 0.3);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   min-width: 100%;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.1);
 }
-.comment__card h3, .comment__card p {
+.comment__card h3,
+.comment__card p {
   margin-bottom: 1rem;
 }
 .comment__card p {
@@ -592,19 +588,55 @@ margin-top: 1rem;
 .comment__footer {
   display: flex;
   justify-content: flex-end;
-  font-size: 0.90rem;
+  font-size: 0.9rem;
   opacity: 0.6;
   align-items: center;
   gap: 30px;
 }
- .delete__post, .put__post {
+
+.show__replays {
+  text-decoration: none;
+  color: black;
+}
+.show__replays:hover {
+  text-shadow: rgb(43, 0, 255) 1px 0 10px;
+}
+.delete__post,
+.put__post {
   position: absolute;
   right: 15px;
   top: 5px;
   font-size: 20px;
   text-decoration: none;
-} 
+}
 .put__post {
   margin-right: 20px;
 }
 
+.formaddcomment {
+  position: sticky;
+  bottom: 50px;
+}
+.addcomment {
+  min-width: 70%;
+  min-height: 7vh;
+  border: 1px solid rgb(16, 5, 5, 0.3);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
+  position: relative;
+  left: 50px;
+  font-size: 20px;
+}
+.btncomment {
+  padding: 5px 10px;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  color: #808080;
+  cursor: pointer;
+  border-radius: 3px;
+  background: lightgray;
+  position: absolute;
+  right: 230px;
+  top: 25px;
+}

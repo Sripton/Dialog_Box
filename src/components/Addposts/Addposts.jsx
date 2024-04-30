@@ -2,28 +2,37 @@ import React, { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 
 export default function Addposts({ setPosts }) {
-  const [text, setText] = useState({
-    title: "",
-  });
+  // const [text, setText] = useState({
+  //   title: "",
+  // });
+  const [text, setText] = useState("");
   const [subject, setSubject] = useState({});
   const [counterpost, setCounterpost] = useState(0);
   const { id } = useParams();
   const textHandler = (e) => {
-    setText((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setText(e.target.value);
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const responce = await fetch(`/api/posts/${id}`, {
+    // const responce = await fetch(`/api/posts/${id}`, {
+    //   method: "POST",
+    //   headers: { "Content-type": "application/json" },
+    //   body: JSON.stringify(text),
+    // });
+    // if (responce.ok) {
+    //   const data = await responce.json();
+    //   setPosts(data);
+    //   setText("");
+    // }
+    await fetch(`/api/posts/${id}`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify(text),
-    });
-    if (responce.ok) {
-      const data = await responce.json();
-      setPosts(data);
-      setText("");
-    }
+      body: JSON.stringify({ title: text }),
+    })
+      .then((res) => res.json())
+      .then((data) => setPosts(data))
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -74,7 +83,7 @@ export default function Addposts({ setPosts }) {
               <div className="commentinputposts">
                 <textarea
                   name="title"
-                  value={text.title || ''}
+                  value={text.title}
                   className="usercommentposts"
                   onChange={textHandler}
                 />

@@ -24,7 +24,7 @@ export default function Changepostcard({ post, setPosts }) {
     }
   };
 
-  console.log("post in card", post);
+  console.log("post in card", post.id);
   console.log("id in card", id);
   return (
     <>
