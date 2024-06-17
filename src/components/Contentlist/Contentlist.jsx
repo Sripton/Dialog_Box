@@ -21,6 +21,7 @@ export default function Contentlist({ direction }) {
         <div className="tabheader__items">
           {direction?.map((direct) => (
             <div
+              key={direct.id}
               className={`tabheader__item ${
                 tab === direct.id ? "tabheader__item_active" : ""
               }`}

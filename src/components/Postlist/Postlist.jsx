@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Postcard from "../Postcard";
 
-export default function Postlist({ posts, setPosts, userIDSession }) {
+export default function Postlist({
+  posts,
+  setPosts,
+  userIDSession,
+  comments,
+  setComments,
+}) {
   const { id } = useParams();
   useEffect(() => {
     fetch(`/api/posts/countposts/${id}`, { method: "GET" })
@@ -15,19 +21,23 @@ export default function Postlist({ posts, setPosts, userIDSession }) {
       .then(() => setPosts((prev) => prev.filter((data) => data.id !== id)))
       .catch((err) => console.log(err));
   };
-  // console.log("posts in postlist", posts);
+
+  console.log('posts', posts);
+
   return (
     <div>
-      {posts?.length &&
+      {posts?.length ? 
         posts?.map((post) => (
           <Postcard
             key={post.id}
-            id={post.id}
             post={post}
             deleteHandler={deleteHandler}
             userIDSession={userIDSession}
+            setPosts={setPosts}
+            comments={comments}
+            setComments={setComments}
           />
-        ))}
+        )) : "no posts"}
     </div>
   );
 }

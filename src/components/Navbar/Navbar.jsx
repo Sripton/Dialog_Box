@@ -33,9 +33,7 @@ export default function Navbar({ userIDSession, userSession, logoutHandler }) {
       ) : (
         <>
           <div className="header-userName">
-            <h3>
-              Привет <span> {`${userSession}`}</span>
-            </h3>
+            <h3> {` Привет ${userSession}`}</h3>
           </div>
           <div className="header-logout">
             <NavLink className="logout" to="/logout" onClick={logoutHandler}>

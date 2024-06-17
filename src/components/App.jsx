@@ -6,9 +6,9 @@ import Signin from "./Signin";
 import Subjectlist from "./Subjectlist";
 import Contentlist from "./Contentlist";
 import Addposts from "./Addposts";
-import Postlist from "./Postlist/Postlist";
-import Changepostlist from "./Changepostlist";
+import Postlist from "./Postlist";
 import Comments from "./Comments";
+import Changepost from "./Changepost";
 
 export default function App({
   userID,
@@ -31,6 +31,8 @@ export default function App({
       navigate("/");
     }
   };
+
+  console.log('allComments', allComments);
 
   return (
     <div>
@@ -76,11 +78,6 @@ export default function App({
           }
         />
         <Route
-          path="/changeposts/:id"
-          element={<Changepostlist posts={posts} setPosts={setPosts} />}
-        />
-
-        <Route
           path="/commentpost/:id"
           element={
             <Comments
@@ -89,6 +86,10 @@ export default function App({
               userIDSession={userIDSession}
             />
           }
+        />
+        <Route
+          path="/changeposts/:id"
+          element={<Changepost setPosts={setPosts} posts={posts} />}
         />
       </Routes>
     </div>

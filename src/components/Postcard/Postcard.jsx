@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Postcard({ post, deleteHandler, userIDSession }) {
+export default function Postcard({
+  post,
+  deleteHandler,
+  userIDSession
+}) {
+  const [counterComment, setCounterComment] = useState(0);
+  useEffect(() => {
+    fetch(`/api/comments/${post.id}`, { method: "GET" })
+      .then((res) => res.json())
+      .then((data) => setCounterComment(data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <>
       {userIDSession !== post.user_id ? (
@@ -16,7 +28,7 @@ export default function Postcard({ post, deleteHandler, userIDSession }) {
                   to={`/commentpost/${post.id}`}
                   className="show__replays"
                 >
-                  replay 0
+                 {`replay ${counterComment.length}`}
                 </NavLink>
               </div>
             </div>
@@ -34,7 +46,8 @@ export default function Postcard({ post, deleteHandler, userIDSession }) {
                   to={`/commentpost/${post.id}`}
                   className="show__replays"
                 >
-                  replay 0
+                  {" "}
+                  {`replay ${counterComment.length}`}
                 </NavLink>
               </div>
             </div>

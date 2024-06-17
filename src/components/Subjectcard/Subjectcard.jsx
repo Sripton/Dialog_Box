@@ -3,7 +3,6 @@ import Modal from "../Modal";
 
 export default function Subjectcard({ id, subject }) {
   const [modalActive, setModalActive] = useState(false);
-  // console.log("id", id);
   return (
     <>
       <div className="card__container" key={subject.id}>

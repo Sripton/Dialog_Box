@@ -1,6 +1,6 @@
 import express from "express";
 
-import { Post, Comment } from "../db/models";
+import { Post, Comment, Subject } from "../db/models";
 
 const router = express.Router();
 
@@ -19,8 +19,6 @@ router.post("/:id", async (req, res) => {
     console.log(error);
   }
 });
-
-
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
@@ -49,6 +47,13 @@ router.get("/getonecomment/:id", async (req, res) => {
     console.log(error);
   }
 });
+// router.get("/replayComments/:id", async (req, res) => {
+//   const { id } = req.params;
+//   try {
+//     const findSubjectID = await Subject.findOne({ where: { id } });
+//     const all
+//   } catch (error) {}
+// });
 
 router.put("/:id", async (req, res) => {
   const { id } = req.params;

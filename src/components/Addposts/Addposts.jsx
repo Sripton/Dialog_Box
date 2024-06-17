@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, useNavigate } from "react-router-dom";
 
 export default function Addposts({ setPosts }) {
-  // const [text, setText] = useState({
-  //   title: "",
-  // });
   const [text, setText] = useState("");
   const [subject, setSubject] = useState({});
   const [counterpost, setCounterpost] = useState(0);
@@ -12,26 +9,19 @@ export default function Addposts({ setPosts }) {
   const textHandler = (e) => {
     setText(e.target.value);
   };
-
+  const navigate = useNavigate();
   const submitHandler = async (e) => {
     e.preventDefault();
-    // const responce = await fetch(`/api/posts/${id}`, {
-    //   method: "POST",
-    //   headers: { "Content-type": "application/json" },
-    //   body: JSON.stringify(text),
-    // });
-    // if (responce.ok) {
-    //   const data = await responce.json();
-    //   setPosts(data);
-    //   setText("");
-    // }
     await fetch(`/api/posts/${id}`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({ title: text }),
     })
       .then((res) => res.json())
-      .then((data) => setPosts(data))
+      .then((data) => {
+        setPosts(data);
+        navigate(`/postlists/${id}`);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -48,9 +38,7 @@ export default function Addposts({ setPosts }) {
       .then((data) => setCounterpost(data))
       .catch((err) => console.log(err));
   }, []);
-  // console.log("id", id);
-  // console.log("subject", subject);
-  // console.log("counterpost", counterpost);
+  console.log("id addddd in add posts", id);
 
   return (
     <div className="wrapperposts">

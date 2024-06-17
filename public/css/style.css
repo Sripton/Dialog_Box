@@ -43,6 +43,7 @@ body {
 }
 .header-icon a {
   margin-right: 10px;
+  color: white;
 }
 
 .header-icon a:last-child {
@@ -225,6 +226,7 @@ body {
 }
 .card__img {
   width: 358px;
+  height: 300px;
   border-radius: 1.5rem;
 }
 .card__data {
@@ -367,7 +369,8 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: rgba(60, 59, 59, 0.5);
+  /* background-color: rgba(60, 59, 59, 0.5); */
+  background-color: rgba(214, 7, 7, 0.5);
   z-index: 1050;
   left: 0;
   top: 0;
@@ -613,21 +616,81 @@ body {
   margin-right: 20px;
 }
 
-.formaddcomment {
-  position: sticky;
-  bottom: 50px;
+.modal__comment__container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(60, 59, 59, 0.5);
+  z-index: 1050;
+  left: 0;
+  top: 0;
 }
-.addcomment {
-  min-width: 70%;
-  min-height: 7vh;
+.modal__comment__block {
+  width: 700px;
+  height: 700px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-40%);
+  transform: translateX(-50%);
+}
+
+.form__add__comment {
+  position: relative;
+  bottom: 30px;
+}
+.add__comment {
+  width: 600px;
+  height: 90px;
+  border-radius: 5px;
+  font-size: 25px;
+}
+.btn__comment {
+  padding: 5px 10px;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  color: #808080;
+  cursor: pointer;
+  border-radius: 3px;
+  background: lightgray;
+  position: relative;
+  left: 10px;
+  bottom: 20px;
+}
+/* font-size: 25px;
+  position: relative;
+  bottom: 100%;
+  left: 48%;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 11; */
+.modal__comment__close {
+  font-size: 25px;
+  z-index: 12;
+  position: relative;
+  bottom: 25px;
+  color: #fff;
+}
+.changepost {
+  padding: 20px;
+  background-color: white;
   border: 1px solid rgb(16, 5, 5, 0.3);
   border-radius: 0.5rem;
-  box-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
-  position: relative;
-  left: 50px;
-  font-size: 20px;
+  min-width: 100%;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.1);
+  min-height: 10vh;
+  font-size: 22px;
 }
-.btncomment {
+
+.changeComments {
+  width: 957px;
+  height: 83px;
+  border: 2px solid white;
+  font-size: 22px;
+}
+
+.btnComment {
   padding: 5px 10px;
   text-transform: uppercase;
   border: none;
@@ -637,6 +700,6 @@ body {
   border-radius: 3px;
   background: lightgray;
   position: absolute;
-  right: 230px;
-  top: 25px;
+  right: 450px;
+  top: 68px;
 }

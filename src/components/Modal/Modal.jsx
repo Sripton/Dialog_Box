@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Addposts from "../Addposts";
 
 export default function Modal({ modalActive, onClose, subject, subjectID }) {
   return (
@@ -19,7 +18,10 @@ export default function Modal({ modalActive, onClose, subject, subjectID }) {
             >
               Добавить пост
             </NavLink>
-            <NavLink className="modal__link-dialog">
+            <NavLink
+              to={`/postlists/${subject.id}`}
+              className="modal__link-dialog"
+            >
               Перейти к обсуждениям
             </NavLink>
           </div>

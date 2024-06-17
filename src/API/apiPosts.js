@@ -42,6 +42,9 @@ router.get("/countposts/:id", async (req, res) => {
     console.log(error);
   }
 });
+router.get("/all", async (req, res) => {
+  res.json(await Post.findAll());
+});
 
 router.put("/changepost/:id", async (req, res) => {
   const { id } = req.params;
