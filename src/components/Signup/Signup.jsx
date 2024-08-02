@@ -24,10 +24,10 @@ export default function Signup({ setUserSession, setUserIDsession }) {
       setUserSession(data.userName); // выдаст только имя
       setUserIDsession(data.userID);
       setInputs("");
-      navigate('/')
+      navigate("/");
     }
   };
-  console.log("inputs", inputs);
+  // console.log("inputs", inputs);
   return (
     <div className="modal">
       <div className="modal__dialog">

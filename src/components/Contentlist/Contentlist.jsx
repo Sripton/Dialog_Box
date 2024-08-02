@@ -7,6 +7,7 @@ export default function Contentlist({ direction }) {
   return (
     <div className="tabcontainer">
       <div className="bgc_blue" />
+      
       <div className="tabcontent">
         <img src={currentDirection.img} alt="content" />
         <div className="tabcontent-description">

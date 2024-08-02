@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Signup from "./Signup";
@@ -23,6 +23,7 @@ export default function App({
   const [comments, setComments] = useState(allComments || null);
 
   const navigate = useNavigate();
+
   const logoutHandler = async () => {
     const responce = await fetch(`/api/users/logout`);
     if (responce.ok) {
@@ -32,8 +33,6 @@ export default function App({
     }
   };
 
-  console.log('allComments', allComments);
-
   return (
     <div>
       <Navbar
@@ -41,7 +40,7 @@ export default function App({
         userSession={userSession}
         logoutHandler={logoutHandler}
       />
-      {/* <Tabcontent /> */}
+
       <Routes>
         <Route path="/" element={<Contentlist direction={direction} />} />
         <Route

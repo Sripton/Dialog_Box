@@ -9,24 +9,6 @@ export default function Modeladdcomments({
   onClose,
 }) {
   return (
-    // <>
-    //   {modalaAddComments && (
-    //     <div className="form__container">
-    //       <form onSubmit={submitCommentHandler} className="form__add__comment">
-    //         <textarea
-    //           className="addcomment"
-    //           name="commentTitle"
-    //           value={textArea.commentTitle || ""}
-    //           onChange={inputCommentHandler}
-    //         />
-    //         <button className="btnComment" type="submit">
-    //           Send
-    //         </button>
-    //       </form>
-    //     </div>
-    //   )}
-    // </>
-
     <>
       {modalaAddComments && (
         <div className="modal__comment__container">

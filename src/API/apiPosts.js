@@ -1,5 +1,5 @@
 import express from "express";
-import { Subject, Post } from "../db/models";
+import { Subject, Post, User } from "../db/models";
 
 const router = express.Router();
 
@@ -22,7 +22,10 @@ router.post("/:id", async (req, res) => {
 router.get("/getonepost/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const findOnePostID = await Post.findOne({ where: { id } });
+    const findOnePostID = await Post.findOne({
+      where: { id },
+      include: { model: User },
+    });
     res.json(findOnePostID);
   } catch (error) {
     console.log(error);
@@ -41,9 +44,6 @@ router.get("/countposts/:id", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-});
-router.get("/all", async (req, res) => {
-  res.json(await Post.findAll());
 });
 
 router.put("/changepost/:id", async (req, res) => {

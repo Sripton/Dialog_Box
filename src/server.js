@@ -11,6 +11,8 @@ import { Direction, Post, Comment } from "./db/models";
 import apiSubjects from "./API/apiSubjects";
 import apiPosts from "./API/apiPosts";
 import apiComments from "./API/apiComments";
+import apiLikes from "./API/apiLikes";
+import apiDisLikes from "./API/apiDislikes";
 
 dotenv.config();
 
@@ -58,4 +60,6 @@ app.use("/api/users", apiUsers);
 app.use("/api/subjects", apiSubjects);
 app.use("/api/posts", apiPosts);
 app.use("/api/comments", apiComments);
+app.use("/api/likes", apiLikes);
+app.use("/api/dislikes", apiDisLikes);
 app.listen(PORT, () => console.log(`Server started on ${PORT} port`));

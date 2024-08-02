@@ -38,7 +38,6 @@ export default function Addposts({ setPosts }) {
       .then((data) => setCounterpost(data))
       .catch((err) => console.log(err));
   }, []);
-  console.log("id addddd in add posts", id);
 
   return (
     <div className="wrapperposts">

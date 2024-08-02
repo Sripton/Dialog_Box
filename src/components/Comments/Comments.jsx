@@ -89,13 +89,13 @@ export default function Comments({ comments, setComments, userIDSession }) {
           <div className="comment__card">
             <p>{post.title}</p>
             <div className="comment__footer">
-              <div>likes 123</div>
-              <div>dislike 23</div>
+              <div>likes 0</div>
+              <div>dislike 0</div>
               <NavLink
                 onClick={() => setModalAddComments(true)}
                 className="show__replays"
               >
-                replay 2
+                {`replay ${comments.length}`}
               </NavLink>
             </div>
           </div>
@@ -107,11 +107,11 @@ export default function Comments({ comments, setComments, userIDSession }) {
               <div className="containerposts" key={comment.id}>
                 <div className="comment__container">
                   <div className="comment__card">
-                    <p>{comment.commentTitle}</p>
+                    <p>{`${comment.commentTitle}`}</p>
                     <div className="comment__footer">
-                      <div>likes 123</div>
-                      <div>dislike 23</div>
-                      <div className="show__replays">replay 2</div>
+                      <NavLink className="fa fa-thumbs-up" />
+                      <i className="fa fa-thumbs-down" />
+                      <div className="show__replays">replay 0</div>
                     </div>
                   </div>
                 </div>
@@ -140,8 +140,8 @@ export default function Comments({ comments, setComments, userIDSession }) {
                     )}
 
                     <div className="comment__footer">
-                      <div>likes 0</div>
-                      <div>dislike 0</div>
+                      <NavLink className="fa fa-thumbs-up" />
+                      <i className="fa fa-thumbs-down" />
                       <div className="show__replays">replay 0</div>
                     </div>
 
@@ -152,30 +152,19 @@ export default function Comments({ comments, setComments, userIDSession }) {
                         editHandler(comment);
                       }}
                     >
-                      ...
+                      <i className="fa fa-pencil" />
                     </NavLink>
                     <NavLink
                       onClick={() => deleteHandlerComments(comment.id)}
                       className="delete__post"
                     >
-                      &times;
+                      <i className="fa fa-times-rectangle" />
                     </NavLink>
                   </div>
                 </div>
               </div>
             )
           )}
-        {/* <form onSubmit={submitCommentHandler} className="formaddcomment">
-        <textarea
-          className="addcomment"
-          name="commentTitle"
-          value={textArea.commentTitle || ""}
-          onChange={inputCommentHandler}
-        />
-        <button className="btnComment" type="submit">
-          Send
-        </button>
-      </form> */}
       </div>
       <Modeladdcomments
         modalaAddComments={modalaAddComments}

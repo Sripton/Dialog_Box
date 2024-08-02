@@ -34,52 +34,48 @@ export default function Changepost({ setPosts, posts }) {
 
   return (
     <>
-      {posts?.length &&
-        posts?.map((post) =>
-          post.id.toString() !== id ? (
-            <div className="containerposts" key={post.id}>
-              <div className="comment__container">
-                <div className="comment__card">
-                  <p>{post.title}</p>
-                  <div className="comment__footer">
-                    <div>likes 0</div>
-                    <div>dislike 0</div>
-                    <NavLink
-                      to={`/commentpost/${post.id}`}
-                      className="show__replays"
-                    >
-                      replay 0
-                    </NavLink>
-                  </div>
+      {posts?.map((post) =>
+        post.id.toString() !==
+        id ? /* <div className="containerposts" key={post.id}>
+            <div className="comment__container">
+              <div className="comment__card">
+                <p>{post.title}</p>
+                <div className="comment__footer">
+                  <div>likes 0</div>
+                  <div>dislike 0</div>
+                  <NavLink
+                    to={`/commentpost/${post.id}`}
+                    className="show__replays"
+                  >
+                    replay 0
+                  </NavLink>
                 </div>
               </div>
             </div>
-          ) : (
-            <div className="containerposts" key={post.id}>
-              <form onSubmit={submitHandler} className="formaddcomment">
-                <textarea
-                  className="changepost"
-                  name="title"
-                  defaultValue={post.title}
-                  onChange={inputHandler}
-                />
-                <button className="btncomment" type="submit">
-                  Edit
-                </button>
-              </form>
-              <div className="comment__footer">
-                <div>likes 0</div>
-                <div>dislike 0</div>
-                <NavLink
-                  to={`/commentpost/${post.id}`}
-                  className="show__replays"
-                >
-                  replay 0
-                </NavLink>
-              </div>
+          </div> */
+           null : (
+          <div className="containerposts" key={post.id}>
+            <form onSubmit={submitHandler} className="formaddcomment">
+              <textarea
+                className="changepost"
+                name="title"
+                defaultValue={post.title}
+                onChange={inputHandler}
+              />
+              <button className="btncomment" type="submit">
+                Edit
+              </button>
+            </form>
+            <div className="comment__footer">
+              <div>likes 0</div>
+              <div>dislike 0</div>
+              <NavLink to={`/commentpost/${post.id}`} className="show__replays">
+                replay 0
+              </NavLink>
             </div>
-          )
-        )}
+          </div>
+        )
+      )}
     </>
   );
 }
