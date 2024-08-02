@@ -6,7 +6,7 @@ export default function Postcard({ post, deleteHandler, userIDSession }) {
   const [likes, setLikes] = useState([]);
   const [disLikes, setDisLikes] = useState({});
   const [postDate, setPostDate] = useState([]);
-  // const [getLike, setGetLike] = useState([]);
+
   const [getDisLike, setGetDisLike] = useState([]);
 
   const handleLikes = async () => {
